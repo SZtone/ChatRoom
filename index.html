@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+   <title>测试WebSocket</title>
+</head>
+
+<body>
+    <script>
+        var ws = new WebSocket("ws://106.12.139.157:9090");
+        ws.onopen = function(event){
+           console.log("客户端已连接上!");
+           ws.send("hello server,this is client!");
+        };
+        ws.onmessage= function(event){
+           console.log("服务器传过来的数据是："+event.data);
+        }
+
+        ws.onclose = function(event){
+            console.log("连接已关闭");
+        };
+    </script>
+</body>
+
+</html>
