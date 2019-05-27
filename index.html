@@ -22,13 +22,14 @@
 <div id="main"  style="height:86%;width: 100%;">
     <ul class="ui-content" style="width: 95%;margin: 0 auto">
 
-        <li class="item">
+        <li class="item Demo">
             <img class="item-toux" src="./portrait.jpg">
             <p class="item-name">小石头</p>
             <div class="item-content">
-                这里是内容
+                <p class="text">这里是内容</p>
             </div>
         </li>
+
         <li class="item">
             <img class="item-toux" src="./portrait.jpg">
             <p class="item-name">小石头</p>
@@ -38,72 +39,32 @@
                 <p class="text">这里是图片dfkghfg肯德基非公开的反馈啊道</p>
             </div>
         </li>
-        <li class="item">
-            <img  class="item-toux" src="./portrait.jpg">
-            <p class="item-name">小石头</p>
-            <div class="item-content">
-                还行吧～
-            </div>
-        </li>
-        <li class="item">
-            <img class="item-toux" src="./portrait.jpg">
-            <p class="item-name">小石头</p>
-            <div class="item-content">
-                这里是内容
-            </div>
-        </li>
-        <li class="item">
-            <img class="item-toux" src="./portrait.jpg">
-            <p class="item-name">小石头</p>
-            <div class="item-content">
-                这里是内容
-            </div>
-        </li>
-        <li class="item">
-            <img class="item-toux" src="./portrait.jpg">
-            <p class="item-name">小石头</p>
-            <div class="item-content">
-                这里是内容
-            </div>
-        </li>
-        <li class="item">
-            <img class="item-toux" src="./portrait.jpg">
-            <p class="item-name">小石头</p>
-            <div class="item-content">
-                这里是内容
-            </div>
-        </li>
-        <li class="item">
-            <img class="item-toux" src="./portrait.jpg">
-            <p class="item-name">小石头</p>
-            <div class="item-content">
-                这里是内容
-            </div>
-        </li>
-        <li class="item">
-            <img class="item-toux" src="./portrait.jpg">
-            <p class="item-name">小石头</p>
-            <div class="item-content">
-                这里是内容
-            </div>
-        </li>
     </ul>
 </div>
 
 <div id="footer" >
     <section class="ui-input-wrap ui-border-t">
         <div class="ui-input ui-border-radius">
-            <input type="text" name="" value="" placeholder="我也说一句...">
+            <input type="text" class="item-text-content" name="" value="" placeholder="我也说一句...">
         </div>
         <button class="ui-btn">评论</button>
     </section>
 </div>
 
     <script>
+
+
+        $('.ui-btn').on('click',function () {
+            const name = '0石头0';
+            const msgs = $('.item-text-content').val();
+            SendMessg(msgs);
+            ItemLog(name,msgs);
+        })
+
         var ws = new WebSocket("ws://106.12.139.157:9090");
         ws.onopen = function(event){
            console.log("客户端已连接上!");
-           ws.send("hello server,this is client!");
+
         };
         ws.onmessage= function(event){
            console.log("服务器传过来的数据是："+event.data);
@@ -112,6 +73,21 @@
         ws.onclose = function(event){
             console.log("连接已关闭");
         };
+        function SendMessg(msg) {
+            ws.send('{"type":"1","name":"0石头0","msg":"'+msg+'"}');
+        }
+        function ItemLog(name,msg)
+        {
+            const tags = `<li class="item">
+                            <img class="item-toux" src="./portrait.jpg">
+                            <p class="item-name">${name}</p>
+                            <div class="item-content">
+                                <p class="text">${msg}</p>
+                            </div>
+                        </li>`;
+            $('.ui-content').append(tags)
+            $('.ui-content').scrollTop( $("#main").height());
+        }
     </script>
 </body>
 
