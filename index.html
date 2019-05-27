@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="http://i.gtimg.cn/vipstyle/frozenui/2.0.0/css/frozen.css">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="layer/layer.js"></script>
+    <script  src="jquery-2.1.4.min.js"></script>
+    <script  src="layer/layer.js"></script>
 </head>
 
 <body>
@@ -52,28 +52,22 @@
 </div>
 
     <script>
-
-
-
+        var x = 100;
+        var y = 1;
+        var rand = parseInt(Math.random() * (x - y + 1) + y);
+        var name = '路人'+rand;
 
         var ws = new WebSocket("ws://106.12.139.157:9090");
         ws.onopen = function(event){
-            var word = prompt("请设置一个名字","");
-            if(word){
-                //输出word的格式
-                var name = word;
-                $('.ui-btn').on('click',function () {
-                    const msgs = $('.item-text-content').val();
-                    if(msgs == ''){
-                        layer.msg('请输入内容哦～');return;
-                    }
-                    $('.item-text-content').val('');
-                    SendMessg(name, msgs);
-                    //ItemLog(name,msgs);
-                })
-            }
-
-
+            $('.ui-btn').on('click',function () {
+                //var name = '路人--是的房价的时间内缴费';
+                const msgs = $('.item-text-content').val();
+                if(msgs == ''){
+                    layer.msg('请输入内容哦~');
+                }
+                $('.item-text-content').val('');
+                SendMessg(name, msgs);
+            })
         };
 
 
