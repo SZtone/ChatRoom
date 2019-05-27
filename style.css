@@ -5,11 +5,16 @@
         padding:5px 0;
     }
 }
+.ui-content{
+    height: 80%;
+    overflow-y: hidden;
+}
 .item{
     width:80%;
     margin-bottom: 14px;
+
 }
-.item img{
+.item img.item-toux{
     width: 0.45rem;
     height: 0.45rem;
     border-radius: 50px;
@@ -22,10 +27,27 @@
     font-size: 0.13rem;
 }
 .item-content{
-    display: inline-block;
+
+    vertical-align:text-top;
+    display: inline-grid;
     background: bisque;
     margin-left: -0.4rem;
     padding: 10px;
     border-radius: 10px;
     font-size: 0.12rem;
+    max-width: 74%;
+
+}
+.item-content img{
+    border-radius: 5px;
+    width: 1rem;
+    height: 1rem;
+    padding-bottom: 5px;
+}
+.item-content .text{
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+
 }
