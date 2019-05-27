@@ -10,7 +10,11 @@ $server->on('message',function(swoole_websocket_server $server,$frame){
    echo "receive from {$frame->fd}:{$frame->data}";
    echo "opcode:{$frame->opcode}";
    echo "fin: {$frame->finish}\n";
-   $server->push($frame->fd,"$frame->data");
+    foreach($server->connections as $key => $fd) {
+        $user_message = $frame->data;
+        $server->push($fd, $user_message);
+    }
+   //$server->push($frame->fd,"$frame->data");
 });
 
 $server->on('close',function($ser,$fd){
@@ -18,3 +22,5 @@ $server->on('close',function($ser,$fd){
 });
 
 $server->start();
+
+
