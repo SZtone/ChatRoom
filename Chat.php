@@ -28,7 +28,7 @@ class Chat
             echo $frame->fd."说".$frame->data;
             foreach ($this->connList as $fd)
             {
-                $this->server->push($fd,json_encode(['on'=>$frame->fd,'msg'=>$frame->data]));
+                $this->server->push($fd,json_encode(['on'=>$frame->fd,'msg'=>$frame->data,'conns'=>count($this->connList)]));
             }
 
     }
