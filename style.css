@@ -1,0 +1,22 @@
+.item{
+    width:80%;
+
+}
+.item img{
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50px;
+}
+.item .item-name{
+    display: inline-block;
+    position: relative;
+    top: -36px;
+    left: 12px;
+}
+.item-content{
+    display: inline-block;
+    background: bisque;
+    margin-left: -46px;
+    padding: 10px;
+    border-radius: 10px;
+}
