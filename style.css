@@ -62,3 +62,18 @@
     width: 100%;
 
 }
+
+.me{
+    margin-left: 20%;
+    text-align: right;
+
+}
+.me .item-toux{
+    float: right;
+}
+.me .item-name{
+    margin-top: 32px;
+}
+.me .item-content{
+    margin-right: 10px;
+}

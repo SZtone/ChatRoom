@@ -56,7 +56,8 @@
         var y = 1;
         var rand = parseInt(Math.random() * (x - y + 1) + y);
         var name = '路人'+rand;
-
+        var MyTime = new Date();
+        var My = Date.parse(MyTime);
         var ws = new WebSocket("ws://106.12.139.157:9090");
         ws.onopen = function(event){
             $('.ui-btn').on('click',function () {
@@ -66,7 +67,7 @@
                     layer.msg('请输入内容哦~');
                 }
                 $('.item-text-content').val('');
-                SendMessg(name, msgs);
+                SendMessg(name, msgs,My);
             })
         };
 
@@ -75,9 +76,9 @@
             const objs = AsJson(event.data);
             $('.item-conn').text(objs['conns']);
             //const msg = '{"name":"546","msg":"456"}';
-            //console.log(AsJson(msg),AsJson(objs['msg']));
+            console.log(AsJson(objs['msg']));
             const item_msg = AsJson(objs['msg']);
-            ItemLog(item_msg.name,item_msg.msg);
+            ItemLog(item_msg.name,item_msg.msg,item_msg.MyFd);
         }
 
         ws.onclose = function(event){
@@ -92,19 +93,25 @@
             return sss;
 
         }
-        function SendMessg(name,msg) {
-            ws.send('{"name":"'+name+'","msg":"'+msg+'"}');
+        function SendMessg(name,msg,My) {
+            ws.send('{"name":"'+name+'","msg":"'+msg+'","MyFd":"'+My+'"}');
         }
-        function ItemLog(name,msg)
+        function ItemLog(name,msg,Isme)
         {
-            const tags = `<li class="item">
+            var cname = '';
+            if(Isme == My){
+                cname = 'item me';
+            }else{
+                cname = 'item'
+            }
+            //console.log(Isme,My);
+            const tags = `<li class="${cname}">
                             <img class="item-toux" src="./portrait.jpg">
                             <p class="item-name">${name}</p>
                             <div class="item-content">
                                 <p class="text">${msg}</p>
                             </div>
-                        </li>`;
-
+                          </li>`;
             $('.ui-content').append(tags)
             $('.ui-content').scrollTop( $("#main").height());
 
