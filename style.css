@@ -15,7 +15,7 @@
     overflow-y: auto;
 }
 .item{
-    width:80%;
+    /*width:80%;*/
     margin-bottom: 14px;
 
 }
@@ -64,15 +64,20 @@
 }
 
 .me{
-    margin-left: 20%;
     text-align: right;
 
 }
 .me .item-toux{
     float: right;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50px;
 }
 .me .item-name{
-    margin-top: 32px;
+    /*margin-top: 32px;
+    display: inline-block;*/
+    margin-right: 55px;
+    font-size: 12px
 }
 .me .item-content{
     margin-right: 10px;

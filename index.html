@@ -60,6 +60,7 @@
         var My = Date.parse(MyTime);
         var ws = new WebSocket("ws://106.12.139.157:9090");
         ws.onopen = function(event){
+            SendMessg(name, "大家好，我是"+name,My);
             $('.ui-btn').on('click',function () {
                 //var name = '路人';
                 const msgs = $('.item-text-content').val();
@@ -74,7 +75,6 @@
 
         ws.onmessage= function(event){
             const objs = AsJson(event.data);
-            console.log(objs);
             $('.item-conn').text(objs['conns']);
             //const msg = '{"name":"546","msg":"456"}';
             const item_msg = AsJson(objs['msg']);
@@ -82,6 +82,7 @@
         }
 
         ws.onclose = function(event){
+
             console.log("连接已关闭");
         };
 
@@ -89,8 +90,8 @@
 
         function AsJson(data){
 
-            var sss = JSON.parse(data);
-            return sss;
+            var str = JSON.parse(data);
+            return str;
 
         }
         function SendMessg(name,msg,My) {
@@ -100,7 +101,7 @@
         {
             var cname = '';
             if(Isme == My){
-                cname = 'item me';
+                cname = ' me';
             }else{
                 cname = 'item'
             }

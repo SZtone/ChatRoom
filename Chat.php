@@ -21,10 +21,6 @@ class Chat
     {
            // echo "$request->fd 进来了".PHP_EOL;
             $this->connList[] = $request->fd;
-            foreach ($this->connList as $fd)
-            {
-                $this->server->push($fd,json_encode(['msg'=>$request]));
-            }
     }
 
     public function onMessage($server,$frame)
@@ -41,6 +37,7 @@ class Chat
     {
         //echo $fd.'退出了'.PHP_EOL;
         $this->connList = array_diff($this->connList,[$fd]);
+
     }
 }
 
