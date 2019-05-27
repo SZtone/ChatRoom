@@ -9,8 +9,8 @@ $server->on('open',function(swoole_websocket_server $server,$request){
 $server->on('message',function(swoole_websocket_server $server,$frame){
    //echo "receive from {$frame->fd}:{$frame->data}";
    //echo "opcode:{$frame->opcode}";
-   //echo "fin: {$frame->finish}\n";
-    var_dump(count($server->onnections));
+   echo "fin: {$frame->finish}\n";
+   echo "connection:{$server->onnections}";
     foreach($server->connections as $key => $fd) {
         $user_message = $frame->data;
         $server->push($fd, $user_message);
