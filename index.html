@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="http://i.gtimg.cn/vipstyle/frozenui/2.0.0/css/frozen.css">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="layer.js"></script>
+    <script type="text/javascript" src="layer/layer.js"></script>
 </head>
 
 <body>
@@ -57,6 +57,10 @@
         $('.ui-btn').on('click',function () {
             const name = '0石头0';
             const msgs = $('.item-text-content').val();
+            if(msgs == ''){
+                layer.msg('请输入内容哦～');return;
+            }
+            $('.item-text-content').val('');
             SendMessg(msgs);
             ItemLog(name,msgs);
         })
