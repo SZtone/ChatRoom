@@ -76,7 +76,6 @@
             const objs = AsJson(event.data);
             $('.item-conn').text(objs['conns']);
             //const msg = '{"name":"546","msg":"456"}';
-            console.log(AsJson(objs['msg']));
             const item_msg = AsJson(objs['msg']);
             ItemLog(item_msg.name,item_msg.msg,item_msg.MyFd);
         }

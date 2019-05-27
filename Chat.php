@@ -19,7 +19,7 @@ class Chat
 
     public function onOpen($server,$request)
     {
-            echo "$request->fd 进来了".PHP_EOL;
+           // echo "$request->fd 进来了".PHP_EOL;
             $this->connList[] = $request->fd;
     }
 
@@ -35,7 +35,7 @@ class Chat
 
     public function onClose($server,$fd)
     {
-        echo $fd.'退出了'.PHP_EOL;
+        //echo $fd.'退出了'.PHP_EOL;
         $this->connList = array_diff($this->connList,[$fd]);
     }
 }
