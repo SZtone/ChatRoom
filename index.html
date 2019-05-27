@@ -26,7 +26,7 @@
             <img class="item-toux" src="./portrait.jpg">
             <p class="item-name">小石头</p>
             <div class="item-content">
-                <p class="text">这里是内容</p>
+                <p class="text">欢迎加入小石头Chat</p>
             </div>
         </li>
 
@@ -36,7 +36,7 @@
             <div class="item-content">
                 <img src="portrait.jpg" alt="">
                 <img src="portrait.jpg" alt="">
-                <p class="text">这里是图片dfkghfg肯德基非公开的反馈啊道</p>
+                <p class="text">试试图片效果，哈哈哈哈</p>
             </div>
         </li>
     </ul>
@@ -67,12 +67,23 @@
 
         };
         ws.onmessage= function(event){
-           console.log("服务器传过来的数据是："+event.data);
+            const objs = AsJson(event.data);
+            ItemLog(objs['name'],objs['msg']);
         }
 
         ws.onclose = function(event){
             console.log("连接已关闭");
         };
+
+
+
+        function AsJson(data){
+
+            var sss = JSON.parse(data);
+            console.log(sss);
+            return sss;
+
+        }
         function SendMessg(msg) {
             ws.send('{"type":"1","name":"0石头0","msg":"'+msg+'"}');
         }
