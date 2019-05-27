@@ -21,11 +21,15 @@ class Chat
     {
            // echo "$request->fd 进来了".PHP_EOL;
             $this->connList[] = $request->fd;
+            foreach ($this->connList as $fd)
+            {
+                $this->server->push($fd,json_encode(['msg'=>$request]));
+            }
     }
 
     public function onMessage($server,$frame)
     {
-            echo $frame->fd."说".$frame->data;
+            //echo $frame->fd."说".$frame->data;
             foreach ($this->connList as $fd)
             {
                 $this->server->push($fd,json_encode(['on'=>$frame->fd,'msg'=>$frame->data,'conns'=>count($this->connList)]));
