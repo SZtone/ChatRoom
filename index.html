@@ -80,8 +80,10 @@
         ws.onmessage= function(event){
             const objs = AsJson(event.data);
             $('.item-conn').text(objs['conns']);
-            const item_msg = AsJson("'"+objs['msg']+"'");
-            ItemLog(item_msg['name'],item_msg['msg']);
+            //const msg = '{"name":"546","msg":"456"}';
+            //console.log(AsJson(msg),AsJson(objs['msg']));
+            const item_msg = AsJson(objs['msg']);
+            ItemLog(item_msg.name,item_msg.msg);
         }
 
         ws.onclose = function(event){
@@ -93,12 +95,11 @@
         function AsJson(data){
 
             var sss = JSON.parse(data);
-            console.log(sss);
             return sss;
 
         }
         function SendMessg(name,msg) {
-            ws.send('{"name":'+name+',"msg":'+msg+'}');
+            ws.send('{"name":"'+name+'","msg":"'+msg+'"}');
         }
         function ItemLog(name,msg)
         {
