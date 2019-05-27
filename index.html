@@ -11,29 +11,27 @@
 </head>
 
 <body>
-<div>
+<div id="header">
     <section class="ui-panel ui-panel-center-multi ui-border-tb">
-        <h2 class="ui-arrowlink">
+        <h3 class="ui-arrowlink">
             <span>Swoole-Chat</span>
-            <span class="ui-panel-subtitle">2 人在线</span>
-        </h2>
+            <span class="ui-panel-subtitle" style="font-size: 0.1rem">2 人在线</span>
+        </h3>
     </section>
-    <div class="main"  style="height:80%;width: 100%;">
-        <ul class="ui-content" style="width: 95%;margin: 0 auto">
-            <li class="item">
-                <img src="./portrait.jpg">
-                <p class="item-name">小石头</p>
-                <div class="item-content">
-                    这里是内容
-                </div>
-            </li>
-            <li>2343</li>
-            <li>34534</li>
-        </ul>
-    </div>
-
 </div>
-
+<div id="main"  style="height:80%;width: 100%;">
+    <ul class="ui-content" style="width: 95%;margin: 0 auto">
+        <li class="item">
+            <img src="./portrait.jpg">
+            <p class="item-name">小石头</p>
+            <div class="item-content">
+                这里是内容
+            </div>
+        </li>
+        <li>2343</li>
+        <li>34534</li>
+    </ul>
+</div>
 
     <script>
         var ws = new WebSocket("ws://106.12.139.157:9090");
