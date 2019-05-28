@@ -1,3 +1,4 @@
+*{font-family: "PT Sans",source-han-sans-simplified-c,"PingFang SC","Hiragino Sans GB",PingHei,"Open Sans",sans-serif,Helvetica Neue,"Work Sans","Microsoft YaHei",SimSun; }
 .Side .title{
 
     height: 44px;
@@ -11,5 +12,49 @@
     display: inline-block;
     height: 44px;
     line-height: 44px;
+}
+.Side .my-item-toux{
+    text-align: center;
 
+}
+.Side .my-item-toux >img{
+    width: 4.72rem;
+    height: 4.72rem;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+.my-item-toux > p{
+    margin: 0;
+    color: #fff0f6;
+}
+.my-item .my-call{
+
+    text-align: center;
+    padding: 10px;
+    width: 85%;
+    margin: 0 auto;
+    border-bottom: 1px solid #999988;
+
+}
+.my-item .my-call a{
+    font-size: 1.25rem;
+    color: #fff0f6;
+    width: 2.6rem;
+    display: inline-block;
+}
+.tone{
+    padding: 10px;
+    width: 85%;
+    margin: 0 auto;
+    border-bottom: 1px solid #999988;
+}
+.ItemName{
+    font-size: 0.12rem;
+}
+.ItemName .set-item-name{
+    display: inline-block;
+    width: 65%;
+    height: 12px;
+    font-size: 0.12rem;
+    color: #999;
 }

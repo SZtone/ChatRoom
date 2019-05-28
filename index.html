@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="static/css/new.css">
     <link rel="stylesheet" href="static/css/side.css">
     <link rel="stylesheet" type="text/css" href="static/css/mui.min.css"/>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1215947_ifnz632ym5i.css"/>
 
     <script  src="static/js/jquery-2.1.4.min.js"></script>
     <script  src="static/js/mui.min.js"></script>
@@ -26,13 +27,7 @@
         .mui-off-canvas-left {
             color: #fff;
         }
-        .title+.content {
-            margin: 10px 15px 35px;
-            color: #bbb;
-            text-indent: 1em;
-            font-size: 14px;
-            line-height: 24px;
-        }
+
     </style>
 
 </head>
@@ -45,11 +40,31 @@
             <div class="mui-scroll Side">
                 <div class="title">小石头Chat <a id="offCanvasHide" class="mui-icon mui-icon-redo mui-pull-right icon" ></a></div>
                 <div class="content">
-
-                    这里是小石头Chat
-
+                    <div class="my-item">
+                        <div class="my-item-toux">
+                            <img src="static/img/portrait.jpg" alt="">
+                            <p>不妄自菲薄，不矫枉过正</p>
+                            <p>不随波逐流，不固步自封</p>
+                        </div>
+                        <div class="my-call">
+                            <a class="iconfont icon-qq-line" href=""></a>
+                            <a class="iconfont icon-github-fill" href=" "></a>
+                            <a class="iconfont icon-git"></a>
+                            <a class="iconfont icon-wechat-line"></a>
+                            <a class="iconfont icon-icon-test1"></a>
+                        </div>
+                    </div>
                 </div>
-                <ul class="mui-table-view" style="background: #333;">
+
+                <div class="tone">
+                    <p>个人设置</p>
+                    <label class="ItemName">
+                        名字：
+                        <input class="set-item-name" value="路人" placeholder="想个名字吧~" type="text">
+                    </label>
+                </div>
+
+                <ul class="mui-table-view" style="background: #333;display: none">
                     <li class="mui-table-view-cell mui-collapse mui-active" style="background: #333;">
                         <a class="mui-navigate-right" href="#">在线人员</a>
                         <div class="mui-collapse-content" style="background: #666;color: #333333;">
@@ -64,14 +79,6 @@
                             </ul>
                         </div>
                     </li>
-                </ul>
-                <ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
-                    <li class="mui-table-view-cell">
-                        <a class="mui-navigate-right">
-                            Item 1
-                        </a>
-                    </li>
-
                 </ul>
             </div>
         </div>
@@ -198,20 +205,30 @@
 
 </script>
 <script>
+
     $('.mui-pull-left').on('click',function () {
         $('.mui-content').scrollTop( $('.ui-content').height())
-        //$('.mui-content').scrollTop( $('.ui-content').height())
-        console.log($('.ui-content').height(),$('.ui-content').height());
     })
 
     var x = 100;
     var y = 1;
     var rand = parseInt(Math.random() * (x - y + 1) + y);
+    var SetName = $('.set-item-name').val();
     var name = '路人'+rand;
+    function SetSendName()
+    {
+         SetName = $('.set-item-name').val();
+        if(SetName != ''){
+
+           name = SetName;
+        }
+    }
+    SetSendName()
     var MyTime = new Date();
     var My = Date.parse(MyTime);
     var ws = new WebSocket("ws://106.12.139.157:9090");
     ws.onopen = function(event){
+        SetSendName()
         SendMessg(name, "大家好，我是"+name,My);
         $('.btn-send').on('click',function () {
             const msgs = $('.item-Send-text').val();
@@ -219,6 +236,7 @@
                 layer.msg('请输入内容哦~');return;
             }
             $('.item-Send-text').val('');
+            SetSendName()
             SendMessg(name, msgs,My);
         })
     };
