@@ -65,7 +65,6 @@
     ws.onopen = function(event){
         SendMessg(name, "大家好，我是"+name,My);
         $('.btn-send').on('click',function () {
-            //var name = '路人';
             const msgs = $('.item-Send-text').val();
             if(msgs == ''){
                 layer.msg('请输入内容哦~');return;
