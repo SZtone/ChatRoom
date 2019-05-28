@@ -50,9 +50,9 @@
 </html>
 <script>
     $('.mui-pull-left').on('click',function () {
-        $('.ui-content').scrollTop( $('.mui-content').height())
+        $('.mui-content').scrollTop( $('.ui-content').height())
         //$('.mui-content').scrollTop( $('.ui-content').height())
-        console.log($('.mui-content').scrollTop( $('.ui-content').height()));
+        console.log($('.ui-content').height(),$('.ui-content').height());
     })
 
     var x = 100;
@@ -118,7 +118,7 @@
                 </div>
             </li>`;
         $('.ui-content').append(tags)
-        $('.ui-content').scrollTop( $('.mui-content').height())
+        $('.mui-content').scrollTop( $('.ui-content').height())
 
     }
 </script>
