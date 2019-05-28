@@ -53,8 +53,8 @@
 }
 .ItemName .set-item-name{
     display: inline-block;
-    width: 65%;
-    height: 12px;
-    font-size: 0.12rem;
+    width: 110px;
+    height: 30px;
+    font-size: 14px;
     color: #999;
 }
