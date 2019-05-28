@@ -41,10 +41,10 @@ class Chat
     {
         //echo $fd.'退出了'.PHP_EOL;
         $this->connList = array_diff($this->connList,[$fd]);
-        foreach ($this->connList as $fd)
+        /*foreach ($this->connList as $fd)
         {
             $this->server->push($fd,json_encode(['on'=>$fd,'msg'=>'{"name":"【系统消息】","msg":"有人退出群聊了"}','conns'=>count($this->connList)]));
-        }
+        }*/
 
     }
 }
