@@ -30,6 +30,7 @@ class Chat
     public function onMessage($server,$frame)
     {
             //echo $frame->fd."说".$frame->data;
+            $data = json_decode($frame->data,true);
             foreach ($this->connList as $fd)
             {
                 $this->server->push($fd,json_encode(['on'=>$frame->fd,'msg'=>$frame->data,'conns'=>count($this->connList)]));

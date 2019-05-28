@@ -12,6 +12,8 @@ li{
 }
 .ui-content{
     overflow-y: auto;
+    width: 95%;
+    margin-left: 2.1%;
     /*height: 100%;*/
 }
 .item-message-content{
