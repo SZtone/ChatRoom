@@ -4,54 +4,64 @@
    <meta charset="UTF-8">
    <title>小石头SWoole-Chat</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="http://i.gtimg.cn/vipstyle/frozenui/2.0.0/css/frozen.css">
-    <link rel="stylesheet" href="style.css">
-    <script  src="jquery-2.1.4.min.js"></script>
-    <script  src="layer/layer.js"></script>
+    <link rel="stylesheet" href="static/css/new.css">
+    <link rel="stylesheet" type="text/css" href="static/css/mui.min.css"/>
+
+    <script  src="static/js/jquery-2.1.4.min.js"></script>
+    <script  src="static/js/mui.min.js"></script>
+    <script  src="static/js/layer/layer.js"></script>
 </head>
 
 <body>
-<div id="header">
-    <section class="ui-panel ui-panel-center-multi ui-border-tb">
-        <h3 class="ui-arrowlink">
-            <span>Swoole-Chat</span>
-            <span class="ui-panel-subtitle" style="font-size: 0.1rem"><span class="item-conn">0</span> 人在线</span>
-        </h3>
-    </section>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-icon mui-icon-bars mui-pull-left"></a>
+    <h1 class="mui-title">Swoole-Chat</h1>
+</header>
+<div class="mui-content" style="padding-bottom: 80px">
+    <div class="item-message-content">
+        <ul class="ui-content">
+            <li class="me">
+                <img class="item-toux" src="static/img/portrait.jpg">
+                <p class="item-name">小石头</p>
+                <div class="item-content">
+                    <img src="static/img/portrait.jpg" class="item-content-img">
+                    <p class="item-content-text">这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容～</p>
+                </div>
+            </li>
+            <li class="item">
+                <img class="item-toux" src="static/img/portrait.jpg">
+                <p class="item-name">小石头</p>
+                <div class="item-content">
+                    <img src="static/img/portrait.jpg" class="item-content-img">
+                    <p class="item-content-text">这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容这里是聊天内容～</p>
+                </div>
+            </li>
+            <li class="item">
+                <img class="item-toux" src="static/img/portrait.jpg">
+                <p class="item-name">小石头</p>
+                <div class="item-content">
+                    <p class="item-content-text">你好啊，小石头～</p>
+                </div>
+            </li>
+            <li class="item">
+                <img class="item-toux" src="static/img/portrait.jpg">
+                <p class="item-name">小石头</p>
+                <div class="item-content">
+                    <p class="item-content-text">你好啊，小石头～</p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
 </div>
-<div id="main"  style="height:86%;width: 100%;">
-    <ul class="ui-content" style="width: 95%;margin: 0 auto">
-
-        <li class="item Demo">
-            <img class="item-toux" src="./portrait.jpg">
-            <p class="item-name">小石头</p>
-            <div class="item-content">
-                <p class="text">欢迎加入小石头Chat</p>
-            </div>
-        </li>
-
-        <li class="item">
-            <img class="item-toux" src="./portrait.jpg">
-            <p class="item-name">小石头</p>
-            <div class="item-content">
-                <img src="portrait.jpg" alt="">
-                <img src="portrait.jpg" alt="">
-                <p class="text">试试图片效果，哈哈哈哈</p>
-            </div>
-        </li>
-    </ul>
-</div>
-
-<div id="footer" >
-    <section class="ui-input-wrap ui-border-t">
-        <div class="ui-input ui-border-radius">
-            <input type="text" class="item-text-content" name="" value="" placeholder="我也说一句...">
+    <nav class="mui-bar mui-bar-tab" id="nav">
+        <div style="background-color: rgba(153, 153, 153, 0.1)">
+            <input type="text" class="item-Send-text" name="" value="" style="border-radius: 20px" placeholder="我也说一句...">
+            <button type="button" class="btn-send">发送</button>
         </div>
-        <button class="ui-btn" style="background-color: rgba(24, 151, 237, 0.7294117647058823);color: #fff;">发送</button>
-    </section>
-</div>
-
+    </nav>
     <script>
+        $('.item-message-content').scrollTop( $('.mui-content .item-message-content ul').height());
         var x = 100;
         var y = 1;
         var rand = parseInt(Math.random() * (x - y + 1) + y);
@@ -61,13 +71,13 @@
         var ws = new WebSocket("ws://106.12.139.157:9090");
         ws.onopen = function(event){
             SendMessg(name, "大家好，我是"+name,My);
-            $('.ui-btn').on('click',function () {
+            $('.btn-send').on('click',function () {
                 //var name = '路人';
-                const msgs = $('.item-text-content').val();
+                const msgs = $('.item-Send-text').val();
                 if(msgs == ''){
-                    layer.msg('请输入内容哦~');
+                    layer.msg('请输入内容哦~');return;
                 }
-                $('.item-text-content').val('');
+                $('.item-Send-text').val('');
                 SendMessg(name, msgs,My);
             })
         };
@@ -107,12 +117,12 @@
             }
             //console.log(Isme,My);
             const tags = `<li class="${cname}">
-                            <img class="item-toux" src="./portrait.jpg">
-                            <p class="item-name">${name}</p>
-                            <div class="item-content">
-                                <p class="text">${msg}</p>
-                            </div>
-                          </li>`;
+                <img class="item-toux" src="static/img/portrait.jpg">
+                <p class="item-name">${name}</p>
+                <div class="item-content">
+                    <p class="item-content-text">${msg}</p>
+                </div>
+            </li>`;
             $('.ui-content').append(tags)
             $('.ui-content').scrollTop( $("#main").height());
 

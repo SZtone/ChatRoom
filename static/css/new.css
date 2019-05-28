@@ -1,0 +1,86 @@
+*{margin: 0;padding: 0;}
+li{
+    list-style: none;
+}
+
+.item-message-content{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 10px;
+    overflow: auto;
+}
+.item{
+    position: relative;
+    margin-bottom: 20px;
+
+}
+.item-toux{
+
+    width: 3.15rem;
+    height: 3.15rem;
+    border-radius: 50px;
+}
+.item .item-name{
+    position: absolute;
+    display: inline-block;
+    top: 2px;
+    left: 3.7rem;
+}
+.item-content{
+    display: inline-grid;
+    background-color: bisque;
+    padding: 10px;
+    vertical-align: text-top;
+    border-radius: 10px;
+    max-width: 75%;
+    text-align: left;
+}
+.item .item-content-img,.me .item-content-img{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 5px;
+}
+.item-content-text{
+    margin-bottom: 0px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.item-Send-text{
+    width: 80%;
+    margin-left: 5px;
+    margin-top: 7px;
+    border-radius: 20px;
+}
+.btn-send{
+    border-radius: 14px;
+    margin-top: 10px;
+    width: 15%;
+    height: 2.4rem;
+    background-color: rgba(24, 151, 237, 0.7294117647058823);
+    color: #fff;
+}
+
+
+.me{
+    position: relative;
+    text-align: right;
+    margin-bottom: 20px;
+}
+.me .item-toux{
+    position: absolute;
+    right: 0px;
+
+}
+.me .item-name{
+
+    position: absolute;
+    display: inline-block;
+    top: 2px;
+    right: 3.7rem;
+}
+.me .item-content{
+    margin-top: 27px;
+    margin-right: 3.7rem;
+}
