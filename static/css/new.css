@@ -27,15 +27,15 @@ li{
 }
 .item-toux{
 
-    width: 3.15rem;
-    height: 3.15rem;
+    width: 2.15rem;
+    height: 2.15rem;
     border-radius: 50px;
 }
 .item .item-name{
     position: absolute;
     display: inline-block;
     top: 2px;
-    left: 3.7rem;
+    left: 2.7rem;
 }
 .item-content{
     display: inline-grid;
@@ -45,6 +45,7 @@ li{
     border-radius: 10px;
     max-width: 75%;
     text-align: left;
+    margin-top: 5px;
 }
 .item .item-content-img,.me .item-content-img{
     width: 80px;
@@ -91,9 +92,9 @@ li{
     position: absolute;
     display: inline-block;
     top: 2px;
-    right: 3.7rem;
+    right: 2.7rem;
 }
 .me .item-content{
     margin-top: 27px;
-    margin-right: 3.7rem;
+    margin-right: 2.7rem;
 }
