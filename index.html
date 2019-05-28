@@ -12,7 +12,7 @@
     <script  src="static/js/mui.min.js"></script>
     <script  src="static/js/layer/layer.js"></script>
     <style>
-        * { touch-action: pan-y; }
+        * { touch-action:none; }
         html,
         body {
             background-color: #efeff4;
@@ -49,6 +49,22 @@
                     这里是小石头Chat
 
                 </div>
+                <ul class="mui-table-view" style="background: #333;">
+                    <li class="mui-table-view-cell mui-collapse mui-active" style="background: #333;">
+                        <a class="mui-navigate-right" href="#">在线人员</a>
+                        <div class="mui-collapse-content" style="background: #666;color: #333333;">
+                            <ul class="mui-table-view" style="display: block;height: 186px;overflow-y: scroll;">
+                                <li class="mui-table-view-cell">Item 1</li>
+                                <li class="mui-table-view-cell">Item 2</li>
+                                <li class="mui-table-view-cell">Item 3</li>
+                                <li class="mui-table-view-cell">Item 3</li>
+                                <li class="mui-table-view-cell">Item 3</li>
+                                <li class="mui-table-view-cell">Item 3</li>
+                                <li class="mui-table-view-cell">Item 3</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
                 <ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
                     <li class="mui-table-view-cell">
                         <a class="mui-navigate-right">
@@ -60,7 +76,7 @@
             </div>
         </div>
     </aside>
-    <div class="mui-inner-wrap">
+    <div class="mui-inner-wrap mui-scroll-wrapper">
         <header class="mui-bar mui-bar-nav">
             <a id='offCanvasShow' class="mui-icon mui-icon-bars mui-pull-left"></a>
             <span class="conn"><i class="item-conn">0</i>人在线</span>
@@ -68,7 +84,7 @@
         </header>
         <div class="mui-content" style="padding-bottom: 80px;padding-top: 2.9rem;width: 100%;height: 102%;
             position: fixed;    overflow-y: auto;">
-            <ul class="ui-content">
+            <ul class="ui-content ">
                 <li class="item">
                     <img class="item-toux" src="static/img/portrait.jpg">
                     <p class="item-name">小石头</p>
@@ -96,6 +112,16 @@
 </body>
 </html>
 <script>
+
+    document.addEventListener('touchstart', function(event) {
+        // 判断默认行为是否可以被禁用
+        if (event.cancelable) {
+            // 判断默认行为是否已经被禁用
+            if (!event.defaultPrevented) {
+                event.preventDefault();
+            }
+        }
+    }, false);
     window.onload = function () {
 
         mui.init();
@@ -156,6 +182,8 @@
 //菜单界面，‘关闭侧滑菜单’按钮的点击事件
         document.getElementById('offCanvasHide').addEventListener('tap', function() {
             offCanvasWrapper.offCanvas('close');
+            mui('.mui-scroll-wrapper').scroll().reLayout();
+            mui('#offCanvasContentScroll').scroll();
         });
 //主界面和侧滑菜单界面均支持区域滚动；
         mui('#offCanvasSideScroll').scroll();
