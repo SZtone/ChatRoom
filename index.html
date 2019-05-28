@@ -39,7 +39,7 @@
 
 <body>
 
-<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
     <aside id="offCanvasSide" class="mui-off-canvas-left">
         <div id="offCanvasSideScroll" class="mui-scroll-wrapper">
             <div class="mui-scroll Side">
@@ -182,8 +182,6 @@
 //菜单界面，‘关闭侧滑菜单’按钮的点击事件
         document.getElementById('offCanvasHide').addEventListener('tap', function() {
             offCanvasWrapper.offCanvas('close');
-            mui('.mui-scroll-wrapper').scroll().reLayout();
-            mui('#offCanvasContentScroll').scroll();
         });
 //主界面和侧滑菜单界面均支持区域滚动；
         mui('#offCanvasSideScroll').scroll();
