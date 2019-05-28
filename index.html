@@ -13,13 +13,14 @@
 </head>
 
 <body>
+
 <header class="mui-bar mui-bar-nav">
     <a class="mui-icon mui-icon-bars mui-pull-left"></a>
     <span class="conn"><i class="item-conn">0</i>人在线</span>
     <h1 class="mui-title">Swoole-Chat</h1>
 </header>
-<div class="mui-content" style="padding-bottom: 80px">
-    <div class="item-message-content">
+<div class="mui-content" style="padding-bottom: 80px;padding-top: 2.9rem;width: 95%;margin-left: 2.1%;height: 102%;
+    position: fixed;    overflow-y: auto;">
         <ul class="ui-content">
             <li class="me">
                 <img class="item-toux" src="static/img/portrait.jpg">
@@ -53,82 +54,87 @@
             </li>
 
         </ul>
-    </div>
 </div>
-    <nav class="mui-bar mui-bar-tab" id="nav">
-        <div style="background-color: rgba(153, 153, 153, 0.08)">
-            <input type="text" class="item-Send-text" name="" value="" style="border-radius: 20px;border: none;" placeholder="我也说一句...">
-            <button type="button" class="btn-send">发送</button>
-        </div>
-    </nav>
-    <script>
-        $('.item-message-content').scrollTop( $('.mui-content .item-message-content ul').height());
-        var x = 100;
-        var y = 1;
-        var rand = parseInt(Math.random() * (x - y + 1) + y);
-        var name = '路人'+rand;
-        var MyTime = new Date();
-        var My = Date.parse(MyTime);
-        var ws = new WebSocket("ws://106.12.139.157:9090");
-        ws.onopen = function(event){
-            SendMessg(name, "大家好，我是"+name,My);
-            $('.btn-send').on('click',function () {
-                //var name = '路人';
-                const msgs = $('.item-Send-text').val();
-                if(msgs == ''){
-                    layer.msg('请输入内容哦~');return;
-                }
-                $('.item-Send-text').val('');
-                SendMessg(name, msgs,My);
-            })
-        };
+<nav class="mui-bar mui-bar-tab" id="nav">
+    <div style="background-color: rgba(153, 153, 153, 0.08)">
+        <input type="text" class="item-Send-text" name="" value="" style="border-radius: 20px;border: none;" placeholder="我也说一句...">
+        <button type="button" class="btn-send">发送</button>
+    </div>
+</nav>
+</body>
+</html>
+<script>
+    $('.mui-pull-left').on('click',function () {
+        //alert(11);
+        //mui('.ui-content').scroll().scrollTo(0,0);
+        $('.ui-content').scrollTop( $('.mui-content').height())
+        console.log($('.ui-content').scrollTop( $('.mui-content').height()));
+    })
 
-
-        ws.onmessage= function(event){
-            const objs = AsJson(event.data);
-            $('.item-conn').text(objs['conns']);
-            //const msg = '{"name":"546","msg":"456"}';
-            const item_msg = AsJson(objs['msg']);
-            ItemLog(item_msg.name,item_msg.msg,item_msg.MyFd);
-        }
-
-        ws.onclose = function(event){
-
-            console.log("连接已关闭");
-        };
-
-
-
-        function AsJson(data){
-
-            var str = JSON.parse(data);
-            return str;
-
-        }
-        function SendMessg(name,msg,My) {
-            ws.send('{"name":"'+name+'","msg":"'+msg+'","MyFd":"'+My+'"}');
-        }
-        function ItemLog(name,msg,Isme)
-        {
-            var cname = '';
-            if(Isme == My){
-                cname = ' me';
-            }else{
-                cname = 'item'
+    var x = 100;
+    var y = 1;
+    var rand = parseInt(Math.random() * (x - y + 1) + y);
+    var name = '路人'+rand;
+    var MyTime = new Date();
+    var My = Date.parse(MyTime);
+    var ws = new WebSocket("ws://106.12.139.157:9090");
+    ws.onopen = function(event){
+        SendMessg(name, "大家好，我是"+name,My);
+        $('.btn-send').on('click',function () {
+            //var name = '路人';
+            const msgs = $('.item-Send-text').val();
+            if(msgs == ''){
+                layer.msg('请输入内容哦~');return;
             }
-            //console.log(Isme,My);
-            const tags = `<li class="${cname}">
+            $('.item-Send-text').val('');
+            SendMessg(name, msgs,My);
+        })
+    };
+
+
+    ws.onmessage= function(event){
+        const objs = AsJson(event.data);
+        $('.item-conn').text(objs['conns']);
+        //const msg = '{"name":"546","msg":"456"}';
+        const item_msg = AsJson(objs['msg']);
+        ItemLog(item_msg.name,item_msg.msg,item_msg.MyFd);
+
+    }
+
+    ws.onclose = function(event){
+
+        console.log("连接已关闭");
+    };
+
+
+
+    function AsJson(data){
+
+        var str = JSON.parse(data);
+        return str;
+
+    }
+    function SendMessg(name,msg,My) {
+        ws.send('{"name":"'+name+'","msg":"'+msg+'","MyFd":"'+My+'"}');
+    }
+    function ItemLog(name,msg,Isme)
+    {
+        var cname = '';
+        if(Isme == My){
+            cname = ' me';
+        }else{
+            cname = 'item'
+        }
+        //console.log(Isme,My);
+        const tags = `<li class="${cname}">
                 <img class="item-toux" src="static/img/portrait.jpg">
                 <p class="item-name">${name}</p>
                 <div class="item-content">
                     <p class="item-content-text">${msg}</p>
                 </div>
             </li>`;
-            $('.ui-content').append(tags)
-            $('.ui-content').scrollTop( $("#main").height());
+        $('.ui-content').append(tags)
+        $('.ui-content,.item-message-content').scrollTop($('.mui-content').height())
 
-        }
-    </script>
-</body>
-
-</html>
+    }
+</script>

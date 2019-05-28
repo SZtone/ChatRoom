@@ -10,6 +10,10 @@ li{
     font-size: 14px;
     color: rgb(4, 80, 216);
 }
+.ui-content{
+    overflow-y: auto;
+    height: 100%;
+}
 .item-message-content{
     width: 95%;
     margin: 0 auto;

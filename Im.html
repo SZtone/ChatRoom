@@ -5,10 +5,8 @@
    <title>小石头SWoole-Chat</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="http://i.gtimg.cn/vipstyle/frozenui/2.0.0/css/frozen.css">
-    <link rel="stylesheet" type="text/css" href="static/css/mui.min.css"/>
     <link rel="stylesheet" href="static/css/style.css">
     <script  src="static/js/jquery-2.1.4.min.js"></script>
-    <script  src="static/js/mui.min.js"></script>
     <script  src="static/js/layer/layer.js"></script>
 </head>
 
@@ -55,7 +53,7 @@
 </div>
 
     <script>
-        $('.ui-content').scrollTop( $("#main").height());
+
         var x = 100;
         var y = 1;
         var rand = parseInt(Math.random() * (x - y + 1) + y);
@@ -118,8 +116,7 @@
                             </div>
                           </li>`;
             $('.ui-content').append(tags)
-
-
+            $('.ui-content').scrollTop( $("#main").height());
         }
     </script>
 </body>
