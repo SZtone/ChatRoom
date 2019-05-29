@@ -21,10 +21,6 @@ class Chat
     {
            // echo "$request->fd 进来了".PHP_EOL;
             $this->connList[] = $request->fd;
-        foreach ($this->connList as $fd)
-        {
-            $this->server->push($fd,json_encode(['on'=>$fd,'msg'=>'{"name":"系统消息","msg":"有人进来了"}','conns'=>count($this->connList)]));
-        }
     }
 
     public function onMessage($server,$frame)
