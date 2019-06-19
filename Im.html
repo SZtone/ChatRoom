@@ -108,13 +108,13 @@
                 cname = 'item'
             }
             //console.log(Isme,My);
-            const tags = `<li class="${cname}">
+            const tags = `<li class = "${cname}">
                             <img class="item-toux" src="static/img/portrait.jpg">
                             <p class="item-name">${name}</p>
                             <div class="item-content">
                                 <p class="text">${msg}</p>
                             </div>
-                          </li> `;
+                          </li>`;
             $('.ui-content').append(tags)
             $('.ui-content').scrollTop( $("#main").height());
         }
